@@ -1,0 +1,7 @@
+<h3>Client Management System</h3>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="ClientInfo">
+    <a href="/"><input type="button" Value="Cancel"></a>
+</form>

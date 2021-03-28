@@ -1,0 +1,10 @@
+<h3>User Registeration Page</h3>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <!-- {% for fm in form %}
+        {{ fm.label_tag}} {{fm}} {{fm.error|striptags}}
+    {% endfor %}    -->
+    {{ form.as_p }}
+    <input type="submit" name="Register User">
+    <a href="/"><input type="button" Value="Cancel"></a>
+</form>
