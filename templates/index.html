@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,36 +10,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
+      .bkgimg{
+        background-image: url('{% static "bgimg.jpg" %}');
+        background-size: cover;
+       }
       #log{
         border: 2px solid white;
+        background-color:black;
         padding: 60px 40px;
         margin-top: 80px;
         -webkit-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
         -moz-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
         box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
       }
-      #formstyle{
-        display: none;
-        width: 500px;
-        border: 2px solid white;
-        padding: 20px 50px;
-        margin-top: 30px;
-        -webkit-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
-        -moz-box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
-        box-shadow: -1px 8px 17px 22px rgba(0,0,0,0.75);
+      .btn{
+          text-align: center;
+          margin:auto;
+          display:block;
       }
     </style>
   </head>
-  <body>
-    <div class="container-fluid bg">
+  <body class="bkgimg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">MinionLabs</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>                           
+          </ul>
+        </div>
+      </div>
+      </nav>
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
         <div class="col-md-4 col-sm-4 col-xs-12">
         <form id="log"  method="get">
-            <a href="/registerationpage" class="btn-success btn-block">User Management System</a>
-            <a href="/clientinformation" class="btn-success btn-block">Client Management System</a>
-            <a href="/deviceinfo" class="btn-success btn-block">Device Management System</a>
-            
+            <a href="/registerationpage" type="button" class="btn-success btn-block btn">User Management System</a>
+            <a href="/clientinformation" class="btn-success btn-block btn">Client Management System</a>
+            <a href="/deviceinfo" class="btn-success btn-block btn">Device Management System</a>  
         </form>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">

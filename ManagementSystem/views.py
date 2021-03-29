@@ -23,7 +23,6 @@ def clientinformation(request):
         form = ClientInfoForm(request.POST)
         if form.is_valid():
             form.save()
-            form = ClientInfoForm()
             messages.success(request, 'Client Information updated in database successfully')
     else:
         form = ClientInfoForm()
@@ -38,4 +37,4 @@ def deviceinfo(request):
             messages.success(request, 'Devices information stored in database successfully')
     else:
         form = DeviceInfoForm()
-    return render(request,'deviceinfo.html')
+    return render(request,'deviceinfo.html',{'form':form})

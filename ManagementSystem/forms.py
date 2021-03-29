@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm, PasswordInput
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.forms import UserCreationForm
 from phone_field import PhoneField
 from .models import *
 
@@ -29,14 +30,14 @@ class RegistrationPage(forms.ModelForm):
             raise  ValidationError("Email already exists")
         return email
 
-    def clean_password(self):
-        super(RegistrationPage, self).clean()
+    def clean(self):
+        cleaned_data = super(RegistrationPage, self).clean()
         # This method will set the `cleaned_data` attribute
-        password = self.cleaned_data.get('password')
-        re_password = self.cleaned_data.get('confirmpassword')
-        if not password == re_password:
+        password = self.cleaned_data.get("password")
+        re_password = self.cleaned_data.get("confirmpassword")
+        if password != re_password:
             raise ValidationError("Passwords doesn't match")
-
+        
 
 class ClientInfoForm(forms.ModelForm):
     name= forms.CharField(max_length=150)
@@ -50,7 +51,7 @@ class ClientInfoForm(forms.ModelForm):
         fields = "__all__" 
 
 class DeviceInfoForm(forms.Form):
-    deviceid = forms.ModelMultipleChoiceField(queryset=ClientManagementSystem.objects.all())
+    deviceid = forms.ModelChoiceField(queryset=ClientManagementSystem.objects.all())
     macaddress= forms.CharField(max_length=12)
     class Meta:
         model = DeviceInfo
